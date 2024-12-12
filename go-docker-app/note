@@ -1,0 +1,29 @@
+docker build -t go-docker-app .
+
+docker run -p 8080:8080 go-docker-app
+
+http://localhost:8080
+
+docker tag go-docker-app mahi2029/go-docker-app:go-docker-app
+
+docker push mahi2029/go-docker-app:go-docker-app
+
+
+
+
+----------------------------------------
+helm repo add stable https://charts.helm.sh/stable
+
+helm repo update
+
+helm create go-app
+
+http://a5967773afa6f47939eab17d2759ea8e-1026320029.us-east-1.elb.amazonaws.com:8080
+
+----------------------------------------------------------------------------------
+
+helm upgrade go-app go-app -n vault
+
+
+
+
