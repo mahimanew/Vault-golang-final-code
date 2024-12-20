@@ -1,0 +1,38 @@
+global:
+  enabled: true
+  namespace: "vault"
+  externalVaultAddr: "https://34.203.204.99:8202/"
+
+injector:
+  enabled: "true"
+  replicas: 1
+  port: 8080
+  authPath: "auth/kubernetes"
+  image:
+    repository: "hashicorp/vault-k8s"
+    tag: "1.5.0"
+    pullPolicy: IfNotPresent
+  agentImage:
+    repository: "hashicorp/vault"
+    tag: "1.18.1"
+
+  agentDefaults:
+    cpuLimit: "500m"
+    cpuRequest: "250m"
+    memLimit: "128Mi"
+    memRequest: "64Mi"
+
+  securityContext:
+    pod: {}
+    container: {}
+
+  serviceAccount:
+    create: true
+    name: "vault-sa"
+    createSecret: true
+
+  certs:
+    secretName: null
+    caBundle: ""
+    certName: tls.crt
+    keyName: tls.key
